@@ -21,13 +21,13 @@ This workspace is a visualization library that receives OSC messages from Sonic 
 
 ## Bandstand Ecosystem
 
-This visualizer is one component of a three-part real-time performance system called **Bandstand**. The peer workspace lives at `../sonic-stage/`.
+This visualizer is one component of a three-part real-time performance system called **Bandstand**. The peer workspace lives at `../bandstand/`.
 
 ### Architecture
 
 | Component | Role | Port | Language |
 |-----------|------|------|----------|
-| **Sonic Pi** (via sonic-stage) | Audio generation engine | 4560 | Ruby |
+| **Sonic Pi** (via bandstand) | Audio generation engine | 4560 | Ruby |
 | **Open Stage Control** | Live UI controller | 7777 | JSON/JS |
 | **Processing** (this workspace) | Visual animations | 8000 | Java/Processing |
 
@@ -45,11 +45,11 @@ Keyboard events (`/key` address pattern):
 ```
 - Instruments: `"solo"`, `"bass"`, `"chord"`
 
-The sending functions in sonic-stage are `animate_drum()` and `animate_keyboard()` in `lib-osc-animation.rb`, which wrap `osc_anim()` / `osc_send`.
+The sending functions in bandstand are `animate_drum()` and `animate_keyboard()` in `lib-osc-animation.rb`, which wrap `osc_anim()` / `osc_send`.
 
 ### Bandstand Config Structure
 
-Musical arrangements are JSON files in `sonic-stage/config/` with:
+Musical arrangements are JSON files in `bandstand/config/` with:
 - **tempo** — BPM
 - **solo/bass/chord** — Synth instrument, amp, ADSR envelope `[a, a_level, d, d_level, s, s_level, r, r_level]`, effects array
 - **drums** — kick/snare/cymbal, each with amp, sample name, effects
